@@ -1,0 +1,5 @@
+ENUNCIADO:
+Necesito por favor desarrollar un sistema con lenguaje PHP para generar ordenes de reparación de quipos y que se pueda actualizar el estado del pedido. Esto con base datos de Mysql Y de frontend: bootstrap 5
+
+FECHA MAXIMA ENTREGA:
+25/03/2022
