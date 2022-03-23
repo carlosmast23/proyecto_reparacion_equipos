@@ -6,10 +6,10 @@ class Admin extends CI_Controller
 	//Vista que se encarga de cargar los datos de la vista principal
     public function index()
     {
-		$this->load->model('PaqueteModel');
-		$resultPaquetes = $this->PaqueteModel->todosActivos();
+		//$this->load->model('PaqueteModel');
+		//$resultPaquetes = $this->PaqueteModel->todosActivos();
 
-        $this->cargarPlantilla('admin/index.php',array("mensaje"=>"","paquetes"=>$resultPaquetes));
+        $this->cargarPlantilla('admin/index.php',array("mensaje"=>""));
     }
 
 

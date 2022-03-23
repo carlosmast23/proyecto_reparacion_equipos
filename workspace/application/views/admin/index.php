@@ -1,7 +1,7 @@
 <div class="container" data-aos="fade-up">
     <div class="section-title">
         <h3><span>Bienvenido </span>Administrador</h3>
-        <p>En esta sección puede modificar los datos de configuración para el sistema del Molinuco</p>
+        <p>En esta sección puede modificar los datos de configuración para el sistema</p>
     </div>
 
     <div class="row">

@@ -8,7 +8,7 @@
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
             <div class="col-lg-4 offset-lg-4">
-                <input type="text" value="<?php echo $dato['nick'] ?>" name="usuario" class="form-control" placeholder="Usuario" required>
+                <input type="text" value="<?php echo $dato['usuario'] ?>" name="usuario" class="form-control" placeholder="Usuario" required>
             </div>
         </div>
 
@@ -26,7 +26,7 @@
 
         <div class="row" data-aos="fade-up" style="margin-top: 15px;" data-aos-delay="100">
             <div class="col-lg-4 offset-lg-4">
-                <input type="text" name="correo" value="<?php echo $dato['correo_electronico'] ?>" class="form-control" placeholder="Correo Electrónico" required>
+                <input type="text" name="correo" value="<?php echo $dato['correo'] ?>" class="form-control" placeholder="Correo Electrónico" required>
             </div>
         </div>
 
@@ -56,9 +56,9 @@
                     ?>
                         <tr>
                             <td><?php echo $contador++ ?></td>
-                            <td><?php echo $fila->nick ?></td>
+                            <td><?php echo $fila->usuario ?></td>
                             <td><?php echo $fila->nombres ?></td>
-                            <td><?php echo $fila->correo_electronico ?></td>
+                            <td><?php echo $fila->correo?></td>
                             <td>
                                 <a href="<?php echo base_url('index.php/admin/usuarioVista') . "/" . $fila->id ?>" title="Editar"><i class="fa fa-edit fa-lg" aria-hidden="true"></i></a>
                                 <a onclick="return confirm('Esta seguro que quiere eliminar el registro?')" href="<?php echo base_url('index.php/admin/usuarioEliminar') . "/" . $fila->id ?>" title="Eliminar">

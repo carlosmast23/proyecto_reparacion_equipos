@@ -4,7 +4,7 @@
 
         public function validar($usuario,$clave)
         {
-            $query=$this->db->query("SELECT count(*) AS total FROM usuario u WHERE u.nick ='$usuario' and clave ='$clave'");
+            $query=$this->db->query("SELECT count(*) AS total FROM usuario u WHERE u.usuario ='$usuario' and u.clave ='$clave'");
             //var_dump($query->row_array());
             //return $query->row_array(); //Devuelve un unico resultado
             

@@ -22,9 +22,8 @@ class Welcome extends CI_Controller
 	public function index()
 	{
 		$this->load->model('PaqueteModel');
-		$resultPaquetes = $this->PaqueteModel->todosActivos();
 
-		$this->cargarPlantilla('index.php', array("mensaje" => "", "paquetes" => $resultPaquetes));
+		$this->cargarPlantilla('index.php', array("mensaje" => ""));
 		//$this->load->view('welcome_message');
 	}
 
