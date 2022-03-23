@@ -9,6 +9,11 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="nav-link scrollto " href="<?= base_url() ?>index.php/admin/usuarioVista">Usuario</a></li>
+                <li><a class="nav-link scrollto " href="<?= base_url() ?>index.php/admin/categoriaVista">Categoria</a></li>
+                <li><a class="nav-link scrollto " href="<?= base_url() ?>index.php/admin/usuarioVista">Establecimiento</a></li>
+                <li><a class="nav-link scrollto " href="<?= base_url() ?>index.php/admin/usuarioVista">Catalogo Productos</a></li>
+                <li><a class="nav-link scrollto " href="<?= base_url() ?>index.php/admin/usuarioVista">Producto</a></li>
+                <li><a class="nav-link scrollto " href="<?= base_url() ?>index.php/admin/usuarioVista">Reparación</a></li>
                 <li><a class="nav-link scrollto" href="<?= base_url() ?>index.php/reservaCtr/reporteCobros">Reporte</a></li>
                 <li><a class="nav-link scrollto" href="<?= base_url() ?>index.php/welcome">Salir</a></li>
             </ul>

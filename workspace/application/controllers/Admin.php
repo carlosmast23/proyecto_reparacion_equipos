@@ -34,6 +34,26 @@ class Admin extends CI_Controller
 		$this->cargarPlantilla('admin/usuario.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
 	}
 
+	public function categoriaVista($id = NULL)
+	{
+		$this->load->model('CategoriaModel');
+		//Consultar todos los transportes de la vista
+		$result = $this->CategoriaModel->todos();
+
+		//Consultar el dato cargado en la vista en caso de que quiera editar
+		$dato=null;
+		$modo="[NUEVO]";
+		if(!is_null($id))
+		{
+			//print("buscando $id");
+			$dato=$this->CategoriaModel->buscarPorId($id);
+			$modo="[EDITAR]";
+			//var_dump($dato);
+		}
+
+		$this->cargarPlantilla('admin/categoria.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
+	}
+
 	public function gestionarUsuarioGrabar()
 	{
 		$id=$this->input->post("id");
