@@ -54,6 +54,66 @@ class Admin extends CI_Controller
 		$this->cargarPlantilla('admin/categoria.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
 	}
 
+	public function establecimientoVista($id = NULL)
+	{
+		$this->load->model('EstablecimientoModel');
+		//Consultar todos los transportes de la vista
+		$result = $this->EstablecimientoModel->todos();
+
+		//Consultar el dato cargado en la vista en caso de que quiera editar
+		$dato=null;
+		$modo="[NUEVO]";
+		if(!is_null($id))
+		{
+			//print("buscando $id");
+			$dato=$this->EstablecimientoModel->buscarPorId($id);
+			$modo="[EDITAR]";
+			//var_dump($dato);
+		}
+
+		$this->cargarPlantilla('admin/establecimiento.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
+	}
+
+	public function catalogoVista($id = NULL)
+	{
+		$this->load->model('CatalogoModel');
+		//Consultar todos los transportes de la vista
+		$result = $this->CatalogoModel->todos();
+
+		//Consultar el dato cargado en la vista en caso de que quiera editar
+		$dato=null;
+		$modo="[NUEVO]";
+		if(!is_null($id))
+		{
+			//print("buscando $id");
+			$dato=$this->CatalogoModel->buscarPorId($id);
+			$modo="[EDITAR]";
+			//var_dump($dato);
+		}
+
+		$this->cargarPlantilla('admin/catalogo.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
+	}
+
+	public function reparacionVista($id = NULL)
+	{
+		$this->load->model('CatalogoModel');
+		//Consultar todos los transportes de la vista
+		$result = $this->CatalogoModel->todos();
+
+		//Consultar el dato cargado en la vista en caso de que quiera editar
+		$dato=null;
+		$modo="[NUEVO]";
+		if(!is_null($id))
+		{
+			//print("buscando $id");
+			$dato=$this->CatalogoModel->buscarPorId($id);
+			$modo="[EDITAR]";
+			//var_dump($dato);
+		}
+
+		$this->cargarPlantilla('admin/reparacion.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
+	}
+
 	public function gestionarUsuarioGrabar()
 	{
 		$id=$this->input->post("id");
