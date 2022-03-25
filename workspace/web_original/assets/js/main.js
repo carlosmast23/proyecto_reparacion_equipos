@@ -1,6 +1,6 @@
 /**
- * Template Name: CIA MOLINUCO TRANS - v3.2.0
- * Template URL: https://bootstrapmade.com/CIA MOLINUCO TRANS-bootstrap-business-template/
+ * Template Name: bootstrap - v3.2.0
+ * Template URL: https://bootstrapmade.com/bootstrap-bootstrap-business-template/
  * Author: BootstrapMade.com
  * License: https://bootstrapmade.com/license/
  */

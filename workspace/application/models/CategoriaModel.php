@@ -14,9 +14,9 @@
             return $resultado;
         }
 
-        public function crear($nombre)
+        public function crear($nombre,$descripcion)
         {
-            $resultado=$this->db->query("INSERT INTO categoria (nombre) VALUES('$nombre', $clave, '$nombres', '$correo');");
+            $resultado=$this->db->query("INSERT INTO categoria (nombre,descripcion) VALUES('$nombre','$descripcion');");
             if ($resultado == true) {
                 return true;
             } else {
@@ -25,17 +25,15 @@
 
         }
 
-        public function editar($id,$usuario,$clave,$nombres,$correo)
+        public function editar($id,$nombre,$descripcion)
         {
             $data = array(
                 'id' => $id,
-                'nick' => $usuario,
-                'clave' => $clave,
-                'nombres' => $nombres,
-                'correo_electronico' => $correo,                
+                'nombre' => $nombre,
+                'descripcion' => $descripcion,
             );
             $this->db->where('id', $id);
-            return $this->db->update('usuario', $data);
+            return $this->db->update('categoria', $data);
 
         }
 
@@ -43,7 +41,7 @@
 	public function eliminar($id)
 	{
 	   $this->db->where('id',$id);
-	   $this->db->delete('usuario');
+	   $this->db->delete('categoria');
 	}
 
 

@@ -33,8 +33,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- =======================================================
-  * Template Name: CIA MOLINUCO TRANS - v3.2.0
-  * Template URL: https://bootstrapmade.com/CIA MOLINUCO TRANS-bootstrap-business-template/
+  * Template Name: bootstrap - v3.2.0
+  * Template URL: https://bootstrapmade.com/bootstrap-bootstrap-business-template/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
@@ -45,11 +45,11 @@
     <section id="topbar" class="d-flex align-items-center">
         <div class="container d-flex justify-content-center justify-content-md-between">
             <div class="contact-info d-flex align-items-center">
-                <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">molinucotrans@gmail.com</a></i>
-                <i class="bi bi-phone d-flex align-items-center ms-4"><span>022083325</span></i>
+                <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">admin@gmail.com</a></i>
+                <i class="bi bi-phone d-flex align-items-center ms-4"><span>022222222</span></i>
             </div>
             <div class="social-links d-none d-md-flex align-items-center">
-                <a href="https://api.whatsapp.com/send?phone=593998071858" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=599999999999" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
                 <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>

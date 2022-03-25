@@ -14,9 +14,9 @@
             return $resultado;
         }
 
-        public function crear($usuario,$clave,$nombres,$correo)
+        public function crear($usuario,$clave,$apellidos,$nombres,$correo,$cargo)
         {
-            $resultado=$this->db->query("INSERT INTO usuario (nick, clave, nombres, correo_electronico) VALUES('$usuario', $clave, '$nombres', '$correo');");
+            $resultado=$this->db->query("INSERT INTO usuario (usuario, clave, apellidos,nombres, correo,cargo) VALUES('$usuario', $clave, '$nombres','$apellidos' ,'$correo','$cargo');");
             if ($resultado == true) {
                 return true;
             } else {
@@ -25,14 +25,16 @@
 
         }
 
-        public function editar($id,$usuario,$clave,$nombres,$correo)
+        public function editar($id,$usuario,$clave,$apellidos,$nombres,$correo,$cargo)
         {
             $data = array(
                 'id' => $id,
-                'nick' => $usuario,
+                'usuario' => $usuario,
                 'clave' => $clave,
+                'apellidos' => $apellidos,
                 'nombres' => $nombres,
-                'correo_electronico' => $correo,                
+                'correo' => $correo,                
+                'cargo' => $cargo
             );
             $this->db->where('id', $id);
             return $this->db->update('usuario', $data);

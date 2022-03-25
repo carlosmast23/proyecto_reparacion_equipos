@@ -139,8 +139,10 @@ class Admin extends CI_Controller
 		$this->UsuarioModel->crear(
 			$this->input->post("usuario"),
 			$this->input->post("clave"),
+			$this->input->post("apellidos"),
 			$this->input->post("nombres"),
-			$this->input->post("correo")
+			$this->input->post("correo"),
+			$this->input->post("cargo")
 		);
 
 	}
@@ -152,10 +154,63 @@ class Admin extends CI_Controller
 			$this->input->post("id"),
 			$this->input->post("usuario"),
 			$this->input->post("clave"),
+			$this->input->post("apellidos"),
 			$this->input->post("nombres"),
-			$this->input->post("correo")
+			$this->input->post("correo"),
+			$this->input->post("cargo")
 		);
 
+	}
+
+	public function gestionarCategoriaGrabar()
+	{
+		$id=$this->input->post("id");
+		if(empty($id))
+		{
+			print("grabar");
+			//Si la variable id no existe entonces mando a GRABAR
+			$this->categoriaGrabar();
+		}
+		else
+		{
+			//Si id existe entonces mando a EDITAR
+			print("editar");
+			$this->categoriaEditar();
+		}
+		
+		redirect('admin/categoriaVista');
+	}
+
+	public function categoriaGrabar()
+	{
+		$this->load->model('CategoriaModel');
+		$this->CategoriaModel->crear(
+			$this->input->post("nombre"),
+			$this->input->post("descripcion")
+		);
+
+	}
+
+	public function categoriaEditar()
+	{
+		$this->load->model('CategoriaModel');
+		$this->CategoriaModel->editar(
+			$this->input->post("id"),
+			$this->input->post("nombre"),
+			$this->input->post("descripcion")
+		);
+
+	}
+
+	public function categoriaEliminar($id = NULL)
+	{
+		if($id != NULL)
+        {
+            $this->load->model("CategoriaModel");
+            $this->CategoriaModel->eliminar($id);
+            redirect('admin/categoriaVista');
+
+        }
 	}
 
 	public function usuarioEliminar($id = NULL)

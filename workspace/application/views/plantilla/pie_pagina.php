@@ -31,14 +31,14 @@
 
        <div class="container py-4">
             <div class="copyright">
-                &copy; Copyright <strong><span>CIA MOLINUCO TRANS</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>bootstrap</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/CIA MOLINUCO TRANS-bootstrap-business-template/ -->
-                Diseñado Por <a href="https://bootstrapmade.com/">Alexandra Nacimba</a>
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bootstrap-bootstrap-business-template/ -->
+                Diseñado Por <a href="https://bootstrapmade.com/">Administrador</a>
             </div>
         </div>
     </footer>
