@@ -2,54 +2,73 @@
 <div class="container" data-aos="fade-up">
 
     <div class="section-title">
-        <h3><span>Reporte </span>Cobros</h3>
+        <h3><span>Reporte </span>Reparación</h3>
     </div>
 
-    <div class="row" data-aos="fade-up" style="margin-top: 15px;" data-aos-delay="100">
-
-        <div class="col-lg-6 ">
-            <input type="button" onclick="ExportToExcel();" value="Exportar Excel" class="btn btn-success">
+    <div class="row" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-12">
+            <form action="<?= base_url() ?>index.php/admin/gestionarReporte" method="post" role="form">
+                <div class="row" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-lg-4 offset-lg-4"> Estado:
+                        <select name="estado" class="form-control">
+                            <option value="A">Todos</option>
+                            <option <?php if($estado == 'R') echo"selected"; ?> value="R">Reparando</option>
+                            <option <?php if($estado == 'T') echo"selected"; ?> value="T">Terminado</option>
+                            <option <?php if($estado == 'C') echo"selected"; ?> value="C">Cancelado</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" data-aos="fade-up" style="margin-top: 15px;margin-bot: 30px;" data-aos-delay="100">
+                    <div class="col-lg-4 offset-lg-4">
+                        <button type="submit" style="width: 100%;" class="btn btn-primary">Filtrar datos</button>
+                    </div>
+                </div>
+            </form>
         </div>
-
+    </div>
+    <div class="row"><tr>
         <div class="col-lg-12 ">
-            <table class="table" id="tabla">
+            <table class="table">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Paquete</th>
-                        <th scope="col">Transporte</th>
-                        <th scope="col">Hospedaje</th>
-                        <th scope="col">Nombres y Apellidos</th>
-                        <th scope="col">Teléfono</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Pagado</th>
-
+                        <th scope="col">Producto</th>
+                        <th scope="col">Establecimiento</th>
+                        <th scope="col">Fecha Ingreso</th>
+                        <th scope="col">Observaciones</th>
+                        <th scope="col">Estado</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     $contador = 1;
-                    foreach ($consulta->result() as $fila) {
+                    foreach ($reparaciones->result() as $fila) {
                     ?>
                         <tr>
                             <td><?php echo $contador++ ?></td>
-                            <td><?php echo $fila->nombrePaquete ?></td>
-                            <td><?php echo $fila->placa ?></td>
-                            <td><?php echo $fila->nombreHospedaje ?></td>
+                            <td><?php echo $fila->codigo_especifico.' '.$fila->descripcion ?></td>
                             <td><?php echo $fila->nombre ?></td>
-                            <td><?php echo $fila->telefono ?></td>
-                            <td><?php echo $fila->email ?></td>
-                            <td><?php echo ($fila->estado=="P")?"NO":"SI" ?></td>
-
-                           
+                            <td><?php echo $fila->fecha_ingreso ?></td>
+                            <td><?php echo $fila->observaciones ?></td>
+                            <td>
+                                <?php 
+                                    if($fila->estado == 'R'){
+                                        echo "Reparando";
+                                    }
+                                    if($fila->estado == 'T'){
+                                        echo "Terminado";
+                                    }
+                                    if($fila->estado == 'C'){
+                                        echo "Cancelado";
+                                    }
+                                ?>
+                            </td>
                         </tr>
                     <?php
                     }
                     ?>
                 </tbody>
             </table>
-
-
         </div>
     </div>
 

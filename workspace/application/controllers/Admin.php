@@ -3,15 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller 
 {
-	//Vista que se encarga de cargar los datos de la vista principal
+	//////////////////////// INICIO //////////////////////////
     public function index()
     {
-		//$this->load->model('PaqueteModel');
-		//$resultPaquetes = $this->PaqueteModel->todosActivos();
-
         $this->cargarPlantilla('admin/index.php',array("mensaje"=>""));
     }
-
+	/////////////////////// FIN INICIO ////////////////////////
 	//////////////////////// USUARIO //////////////////////////
 	public function usuarioVista($id = NULL)
 	{
@@ -31,25 +28,6 @@ class Admin extends CI_Controller
 		}
 
 		$this->cargarPlantilla('admin/usuario.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
-	}
-	public function reparacionVista($id = NULL)
-	{
-		$this->load->model('CatalogoModel');
-		//Consultar todos los transportes de la vista
-		$result = $this->CatalogoModel->todos();
-
-		//Consultar el dato cargado en la vista en caso de que quiera editar
-		$dato=null;
-		$modo="[NUEVO]";
-		if(!is_null($id))
-		{
-			//print("buscando $id");
-			$dato=$this->CatalogoModel->buscarPorId($id);
-			$modo="[EDITAR]";
-			//var_dump($dato);
-		}
-
-		$this->cargarPlantilla('admin/reparacion.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
 	}
 	public function gestionarUsuarioGrabar()
 	{
@@ -244,8 +222,7 @@ class Admin extends CI_Controller
 			$modo="[EDITAR]";
 		}
 
-		$this->cargarPlantilla('admin/catalogo.php',array("consulta"=>$result,"categorias"=>$categorias,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
-		// $this->cargarPlantilla('admin/catalogo.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));
+		$this->cargarPlantilla('admin/catalogo.php',array("consulta"=>$result,"categorias"=>$categorias,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));
 	}
 	public function gestionarCatalogoGrabar()
 	{
@@ -290,8 +267,158 @@ class Admin extends CI_Controller
         }
 	}
 	//////////////////////// FIN CATALOGO /////////////////
-	
-	
+	//////////////////////// PRODUCTO VISTA //////////////////////
+	public function productoVista($id = NULL)
+	{
+		$this->load->model('ProductoModel');
+		$result = $this->ProductoModel->todos();
+
+		$this->load->model('EstablecimientoModel');
+		$establecimientos = $this->EstablecimientoModel->todos();
+
+		$this->load->model('CatalogoModel');
+		$catalogos = $this->CatalogoModel->todos();
+
+		$dato=null;
+		$modo="[NUEVO]";
+		if(!is_null($id))
+		{
+			$this->load->model('ProductoModel');
+			$dato=$this->ProductoModel->buscarPorId($id);
+			$modo="[EDITAR]";
+		}
+
+		$this->cargarPlantilla('admin/producto.php',array("consulta"=>$result,"establecimientos"=>$establecimientos, "catalogos"=>$catalogos, "dato"=>$dato,"mensaje"=>"","modo"=>$modo));
+	}
+	public function gestionarProductoGrabar()
+	{
+		$id=$this->input->post("id");
+		if(empty($id))
+		{
+			$this->productoGrabar();
+		}
+		else
+		{
+			$this->productoEditar();
+		}
+		
+		redirect('admin/productoVista');
+	}
+	public function productoGrabar()
+	{
+		$this->load->model('ProductoModel');
+		$this->ProductoModel->crear(
+			$this->input->post("codigo_especifico"),
+			$this->input->post("id_producto_generico"),
+			$this->input->post("id_establecimiento")
+		);
+	}
+	public function productoEditar()
+	{
+		$this->load->model('ProductoModel');
+		$this->ProductoModel->editar(
+			$this->input->post("id"),
+			$this->input->post("codigo_especifico"),
+			$this->input->post("id_producto_generico"),
+			$this->input->post("id_establecimiento")
+		);
+	}
+	public function productoEliminar($id = NULL)
+	{
+		if($id != NULL)
+        {
+            $this->load->model("ProductoModel");
+            $this->ProductoModel->eliminar($id);
+            redirect('admin/productoVista');
+        }
+	}
+	//////////////////////// FIN PRODUCTO /////////////////
+	/////////////////////// REPARACIÓN ////////////////////
+	public function reparacionVista($id = NULL)
+	{
+		$this->load->model('ReparacionModel');
+		$result = $this->ReparacionModel->todos();
+
+		$this->load->model('ProductoModel');
+		$productos = $this->ProductoModel->todos();
+
+		$dato=null;
+		$modo="[NUEVO]";
+		if(!is_null($id))
+		{
+			$dato=$this->ReparacionModel->buscarPorId($id);
+			$modo="[EDITAR]";
+		}
+
+		$this->cargarPlantilla('admin/reparacion.php',array("consulta"=>$result,"productos"=>$productos,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
+	}
+	public function gestionarReparacionGrabar()
+	{
+		$id=$this->input->post("id");
+		if(empty($id))
+		{
+			$this->reparacionGrabar();
+		}
+		else
+		{
+			$this->reparacionEditar();
+		}
+		
+		redirect('admin/reparacionVista');
+	}
+	public function reparacionGrabar()
+	{
+		$this->load->model('ReparacionModel');
+		$this->ReparacionModel->crear(
+			$this->input->post("fecha_ingreso"),
+			$this->input->post("estado"),
+			$this->input->post("observaciones"),
+			$this->input->post("id_producto_especifico")
+		);
+	}
+	public function reparacionEditar()
+	{
+		$this->load->model('ReparacionModel');
+		$this->ReparacionModel->editar(
+			$this->input->post("id"),
+			$this->input->post("fecha_ingreso"),
+			$this->input->post("estado"),
+			$this->input->post("observaciones"),
+			$this->input->post("id_producto_especifico")
+		);
+	}
+	public function reparacionEliminar($id = NULL)
+	{
+		if($id != NULL)
+        {
+            $this->load->model("ReparacionModel");
+            $this->ReparacionModel->eliminar($id);
+            redirect('admin/reparacionVista');
+        }
+	}
+	///////////////////// FIN REPARACIÓN ////////////////////
+	///////////////////// REPORTE ///////////////////////////
+	public function reporteVista($estado = NULL)
+	{
+		$this->load->model('ReparacionModel');
+
+		if(!is_null($estado) && $estado != 'A')
+		{
+			$reparaciones = $this->ReparacionModel->buscarPorEstado($estado);
+		}else{
+			$reparaciones = $this->ReparacionModel->todos();
+		}
+
+		$this->cargarPlantilla('admin/reporte.php',array("reparaciones"=>$reparaciones, "estado"=>$estado, "mensaje"=>""));		
+	}
+	public function gestionarReporte()
+	{
+		$estado=$this->input->post("estado");		
+		printf('Gestionar: '.$estado);
+		$this->reporteVista($estado);
+		//redirect('admin/reporteVista');
+	}
+	/////////////////////// FIN REPORTE //////////////////////////
 	//////////////////////// TRANSPORTE //////////////////////////
 
 	public function transporteVista($id = NULL)
@@ -313,7 +440,6 @@ class Admin extends CI_Controller
 
 		$this->cargarPlantilla('admin/transporte.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
 	}
-
 	public function gestionarTranporteGrabar()
 	{
 		$id=$this->input->post("id");
@@ -332,7 +458,6 @@ class Admin extends CI_Controller
 		
 		redirect('admin/transporteVista');
 	}
-
 	public function transporteGrabar()
 	{
 		$this->load->model('TransporteModel');
@@ -346,7 +471,6 @@ class Admin extends CI_Controller
 		//redirect('admin/transporteVista');
 
 	}
-
 	public function transporteEditar()
 	{
 		$this->load->model('TransporteModel');
@@ -361,7 +485,6 @@ class Admin extends CI_Controller
 		//redirect('admin/transporteVista');
 
 	}
-
 	public function transporteEliminar($id = NULL)
 	{
 		if($id != NULL)
@@ -372,7 +495,6 @@ class Admin extends CI_Controller
 
         }
 	}
-
 	//////////////////////// FIN TRANSPORTE //////////////////////////
 
 	//////////////////////// VISTAS //////////////////////////
@@ -380,7 +502,6 @@ class Admin extends CI_Controller
 	{
 		$this->cargarPlantilla('admin/hospedaje.php',array("mensaje"=>""));		
 	}
-
 	public function turistaVista()
 	{
 		$this->cargarPlantilla('admin/turista.php',array("mensaje"=>""));		
@@ -390,7 +511,6 @@ class Admin extends CI_Controller
 	{
 		$this->cargarPlantilla('admin/cobro.php',array("mensaje"=>""));		
 	}
-    
     private function cargarPlantilla($pagina,$array)
 	{
 		$this->load->view('plantilla/cabecera.php');

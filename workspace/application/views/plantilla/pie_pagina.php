@@ -56,11 +56,14 @@
     <script src="<?= base_url() ?>public/assets/vendor/purecounter/purecounter.js"></script>
     <script src="<?= base_url() ?>public/assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="<?= base_url() ?>public/assets/vendor/waypoints/noframework.waypoints.js"></script>
-
-
+    <script src="<?= base_url() ?>public/assets/vendor/select2/dist/js/select2.js"></script>
     <!-- Template Main JS File -->
     <script src="<?= base_url() ?>public/assets/js/main.js"></script>
-
+    <script>
+        $(document).ready(function() {
+            $('.buscar').select2();
+        });
+    </script>                
     </body>
 
     </html>

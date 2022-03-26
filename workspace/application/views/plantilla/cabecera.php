@@ -26,6 +26,7 @@
     <link href="<?= base_url() ?>public/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>public/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>public/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>public/assets/vendor/select2/dist/css/select2.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="<?= base_url() ?>public/assets/css/style.css" rel="stylesheet">

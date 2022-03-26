@@ -8,7 +8,7 @@
         
         <div class="form-group row">
             <div class="col-lg-4 offset-lg-4">Categoria:
-                <select name="id_categoria" class="form-control">
+                <select name="id_categoria" class="form-control buscar">
                     <?php
                         foreach ($categorias->result() as $fila) 
                         {
@@ -19,7 +19,7 @@
                             </option>
                     <?php
                         }
-                    ?>
+                    ?>                    
                 </select>
             </div>
         </div>
