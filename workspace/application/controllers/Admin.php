@@ -12,7 +12,6 @@ class Admin extends CI_Controller
         $this->cargarPlantilla('admin/index.php',array("mensaje"=>""));
     }
 
-
 	//////////////////////// USUARIO //////////////////////////
 	public function usuarioVista($id = NULL)
 	{
@@ -33,67 +32,6 @@ class Admin extends CI_Controller
 
 		$this->cargarPlantilla('admin/usuario.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
 	}
-
-	public function categoriaVista($id = NULL)
-	{
-		$this->load->model('CategoriaModel');
-		//Consultar todos los transportes de la vista
-		$result = $this->CategoriaModel->todos();
-
-		//Consultar el dato cargado en la vista en caso de que quiera editar
-		$dato=null;
-		$modo="[NUEVO]";
-		if(!is_null($id))
-		{
-			//print("buscando $id");
-			$dato=$this->CategoriaModel->buscarPorId($id);
-			$modo="[EDITAR]";
-			//var_dump($dato);
-		}
-
-		$this->cargarPlantilla('admin/categoria.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
-	}
-
-	public function establecimientoVista($id = NULL)
-	{
-		$this->load->model('EstablecimientoModel');
-		//Consultar todos los transportes de la vista
-		$result = $this->EstablecimientoModel->todos();
-
-		//Consultar el dato cargado en la vista en caso de que quiera editar
-		$dato=null;
-		$modo="[NUEVO]";
-		if(!is_null($id))
-		{
-			//print("buscando $id");
-			$dato=$this->EstablecimientoModel->buscarPorId($id);
-			$modo="[EDITAR]";
-			//var_dump($dato);
-		}
-
-		$this->cargarPlantilla('admin/establecimiento.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
-	}
-
-	public function catalogoVista($id = NULL)
-	{
-		$this->load->model('CatalogoModel');
-		//Consultar todos los transportes de la vista
-		$result = $this->CatalogoModel->todos();
-
-		//Consultar el dato cargado en la vista en caso de que quiera editar
-		$dato=null;
-		$modo="[NUEVO]";
-		if(!is_null($id))
-		{
-			//print("buscando $id");
-			$dato=$this->CatalogoModel->buscarPorId($id);
-			$modo="[EDITAR]";
-			//var_dump($dato);
-		}
-
-		$this->cargarPlantilla('admin/catalogo.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
-	}
-
 	public function reparacionVista($id = NULL)
 	{
 		$this->load->model('CatalogoModel');
@@ -113,7 +51,6 @@ class Admin extends CI_Controller
 
 		$this->cargarPlantilla('admin/reparacion.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
 	}
-
 	public function gestionarUsuarioGrabar()
 	{
 		$id=$this->input->post("id");
@@ -132,7 +69,6 @@ class Admin extends CI_Controller
 		
 		redirect('admin/usuarioVista');
 	}
-
 	public function usuarioGrabar()
 	{
 		$this->load->model('UsuarioModel');
@@ -146,7 +82,6 @@ class Admin extends CI_Controller
 		);
 
 	}
-
 	public function usuarioEditar()
 	{
 		$this->load->model('UsuarioModel');
@@ -161,7 +96,32 @@ class Admin extends CI_Controller
 		);
 
 	}
+	public function usuarioEliminar($id = NULL)
+	{
+		if($id != NULL)
+        {
+            $this->load->model("UsuarioModel");
+            $this->UsuarioModel->eliminar($id);
+            redirect('admin/usuarioVista');
 
+        }
+	}
+	//////////////////////// CATEGORIA //////////////////////////
+	public function categoriaVista($id = NULL)
+	{
+		$this->load->model('CategoriaModel');
+		$result = $this->CategoriaModel->todos();
+
+		$dato=null;
+		$modo="[NUEVO]";
+		if(!is_null($id))
+		{
+			$dato=$this->CategoriaModel->buscarPorId($id);
+			$modo="[EDITAR]";
+		}
+
+		$this->cargarPlantilla('admin/categoria.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
+	}
 	public function gestionarCategoriaGrabar()
 	{
 		$id=$this->input->post("id");
@@ -180,7 +140,6 @@ class Admin extends CI_Controller
 		
 		redirect('admin/categoriaVista');
 	}
-
 	public function categoriaGrabar()
 	{
 		$this->load->model('CategoriaModel');
@@ -190,7 +149,6 @@ class Admin extends CI_Controller
 		);
 
 	}
-
 	public function categoriaEditar()
 	{
 		$this->load->model('CategoriaModel');
@@ -201,7 +159,6 @@ class Admin extends CI_Controller
 		);
 
 	}
-
 	public function categoriaEliminar($id = NULL)
 	{
 		if($id != NULL)
@@ -213,17 +170,128 @@ class Admin extends CI_Controller
         }
 	}
 
-	public function usuarioEliminar($id = NULL)
+	//////////////////////// ESTABLECIMIENTO //////////////////////
+	public function establecimientoVista($id = NULL)
+	{
+		$this->load->model('EstablecimientoModel');
+		$result = $this->EstablecimientoModel->todos();
+
+		$dato=null;
+		$modo="[NUEVO]";
+		if(!is_null($id))
+		{
+			$dato=$this->EstablecimientoModel->buscarPorId($id);
+			$modo="[EDITAR]";
+		}
+
+		$this->cargarPlantilla('admin/establecimiento.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
+	}
+	public function gestionarEstablecimientoGrabar()
+	{
+		$id=$this->input->post("id");
+		if(empty($id))
+		{
+			$this->establecimientoGrabar();
+		}
+		else
+		{
+			$this->establecimientoEditar();
+		}
+		
+		redirect('admin/establecimientoVista');
+	}
+	public function establecimientoGrabar()
+	{
+		$this->load->model('EstablecimientoModel');
+		$this->EstablecimientoModel->crear(
+			$this->input->post("nombre")
+		);
+	}
+	public function establecimientoEditar()
+	{
+		$this->load->model('EstablecimientoModel');
+		$this->EstablecimientoModel->editar(
+			$this->input->post("id"),
+			$this->input->post("nombre")
+		);
+	}
+	public function establecimientoEliminar($id = NULL)
 	{
 		if($id != NULL)
         {
-            $this->load->model("UsuarioModel");
-            $this->UsuarioModel->eliminar($id);
-            redirect('admin/usuarioVista');
-
+            $this->load->model("EstablecimientoModel");
+            $this->EstablecimientoModel->eliminar($id);
+            redirect('admin/establecimientoVista');
         }
 	}
+	//////////////////////// FIN ESTABLECIMIENTO /////////////////
 
+	//////////////////////// CATALOGO VISTA //////////////////////
+	public function catalogoVista($id = NULL)
+	{
+		$this->load->model('CatalogoModel');
+		$result = $this->CatalogoModel->todos();
+
+		$this->load->model('CategoriaModel');
+		$categorias = $this->CategoriaModel->todos();
+
+		$dato=null;
+		$modo="[NUEVO]";
+		if(!is_null($id))
+		{
+			$this->load->model('CatalogoModel');
+			$dato=$this->CatalogoModel->buscarPorId($id);
+			$modo="[EDITAR]";
+		}
+
+		$this->cargarPlantilla('admin/catalogo.php',array("consulta"=>$result,"categorias"=>$categorias,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));		
+		// $this->cargarPlantilla('admin/catalogo.php',array("consulta"=>$result,"dato"=>$dato,"mensaje"=>"","modo"=>$modo));
+	}
+	public function gestionarCatalogoGrabar()
+	{
+		$id=$this->input->post("id");
+		if(empty($id))
+		{
+			$this->catalogoGrabar();
+		}
+		else
+		{
+			$this->catalogoEditar();
+		}
+		
+		redirect('admin/catalogoVista');
+	}
+	public function catalogoGrabar()
+	{
+		$this->load->model('CatalogoModel');
+		$this->CatalogoModel->crear(
+			$this->input->post("codigo"),
+			$this->input->post("descripcion"),
+			$this->input->post("id_categoria")
+		);
+	}
+	public function catalogoEditar()
+	{
+		$this->load->model('CatalogoModel');
+		$this->CatalogoModel->editar(
+			$this->input->post("id"),
+			$this->input->post("codigo"),
+			$this->input->post("descripcion"),
+			$this->input->post("id_categoria")
+		);
+	}
+	public function catalogoEliminar($id = NULL)
+	{
+		if($id != NULL)
+        {
+            $this->load->model("CatalogoModel");
+            $this->CatalogoModel->eliminar($id);
+            redirect('admin/catalogoVista');
+        }
+	}
+	//////////////////////// FIN CATALOGO /////////////////
+	
+	
 	//////////////////////// TRANSPORTE //////////////////////////
 
 	public function transporteVista($id = NULL)
@@ -307,6 +375,7 @@ class Admin extends CI_Controller
 
 	//////////////////////// FIN TRANSPORTE //////////////////////////
 
+	//////////////////////// VISTAS //////////////////////////
 	public function hospedajeVista()
 	{
 		$this->cargarPlantilla('admin/hospedaje.php',array("mensaje"=>""));		
@@ -329,4 +398,5 @@ class Admin extends CI_Controller
 		$this->load->view($pagina,$array);
 		$this->load->view('plantilla/pie_pagina.php');
 	}
+	//////////////////////// FIN VISTAS //////////////////////////
 }

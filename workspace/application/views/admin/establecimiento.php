@@ -1,5 +1,5 @@
 <div class="container" data-aos="fade-up">
-    <form action="<?= base_url() ?>index.php/admin/gestionarUsuarioGrabar" method="post" role="form">
+    <form action="<?= base_url() ?>index.php/admin/gestionarEstablecimientoGrabar" method="post" role="form">
         <div class="section-title">
             <h3><span>Gestionar </span>Establecimiento</h3><?php echo $modo ?>
         </div>
@@ -9,10 +9,9 @@
         
         <div class="row" data-aos="fade-up" style="margin-top: 15px;" data-aos-delay="100">
             <div class="col-lg-4 offset-lg-4">
-                <input type="text" name="nombres" value="<?php echo $dato['nombre'] ?>" class="form-control" placeholder="Nombres" required>
+                <input type="text" name="nombre" value="<?php echo $dato['nombre'] ?>" class="form-control" placeholder="Nombre" required>
             </div>
         </div>
-
         
         <div class="row" data-aos="fade-up" style="margin-top: 15px;" data-aos-delay="100">
             <div class="col-lg-4 offset-lg-4">
@@ -39,8 +38,8 @@
                             <td><?php echo $contador++ ?></td>
                             <td><?php echo $fila->nombre ?></td>
                             <td>
-                                <a href="<?php echo base_url('index.php/admin/usuarioVista') . "/" . $fila->id ?>" title="Editar"><i class="fa fa-edit fa-lg" aria-hidden="true"></i></a>
-                                <a onclick="return confirm('Esta seguro que quiere eliminar el registro?')" href="<?php echo base_url('index.php/admin/usuarioEliminar') . "/" . $fila->id ?>" title="Eliminar">
+                                <a href="<?php echo base_url('index.php/admin/establecimientoVista') . "/" . $fila->id ?>" title="Editar"><i class="fa fa-edit fa-lg" aria-hidden="true"></i></a>
+                                <a onclick="return confirm('Esta seguro que quiere eliminar el registro?')" href="<?php echo base_url('index.php/admin/establecimientoEliminar') . "/" . $fila->id ?>" title="Eliminar">
                                     <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
                                 </a>
 

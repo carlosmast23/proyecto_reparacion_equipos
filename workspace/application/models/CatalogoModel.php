@@ -5,18 +5,26 @@
         public function buscarPorId($id)
         {
             $query=$this->db->get_where('producto_generico',array('id' => $id));
-            return $query->row_array(); //Devuelve un unico resultado
+            // $resultado = $this->db->query(
+            //     'select pg.id, pg.codigo, pg.descripcion, pg.estado, c.id_categoria'.
+            //     ' from producto_generico pg inner join categoria c on pg.id_categoria = c.id'.
+            //     ' where pg.id='.$id);
+            // return $resultado->row_array(); //Devuelve un unico resultado
+            return $query->row_array();
         }
 
         public function todos()
         {
-            $resultado=$this->db->get('producto_generico');
+            $resultado = $this->db->query(
+                'select pg.id, pg.codigo, pg.descripcion, pg.estado, c.nombre'.
+                ' from producto_generico pg inner join categoria c on pg.id_categoria = c.id'
+            );
             return $resultado;
         }
 
-        public function crear($nombre)
+        public function crear($codigo,$descripcion,$id_categoria)
         {
-            $resultado=$this->db->query("INSERT INTO producto_generico (nombre) VALUES('$nombre');");
+            $resultado=$this->db->query("INSERT INTO producto_generico (codigo,descripcion,id_categoria) VALUES('$codigo','$descripcion','$id_categoria');");
             if ($resultado == true) {
                 return true;
             } else {
@@ -25,14 +33,13 @@
 
         }
 
-        public function editar($id,$usuario,$clave,$nombres,$correo)
+        public function editar($id,$codigo,$descripcion,$id_categoria)
         {
             $data = array(
                 'id' => $id,
-                'nick' => $usuario,
-                'clave' => $clave,
-                'nombres' => $nombres,
-                'correo_electronico' => $correo,                
+                'codigo' => $codigo,
+                'descripcion' => $descripcion,
+                'id_categoria' => $id_categoria            
             );
             $this->db->where('id', $id);
             return $this->db->update('producto_generico', $data);

@@ -25,26 +25,22 @@
 
         }
 
-        public function editar($id,$usuario,$clave,$nombres,$correo)
+        public function editar($id,$nombre)
         {
             $data = array(
                 'id' => $id,
-                'nick' => $usuario,
-                'clave' => $clave,
-                'nombres' => $nombres,
-                'correo_electronico' => $correo,                
+                'nombre' => $nombre,           
             );
             $this->db->where('id', $id);
-            return $this->db->update('usuario', $data);
-
+            return $this->db->update('establecimiento', $data);
         }
 
         
-	public function eliminar($id)
-	{
-	   $this->db->where('id',$id);
-	   $this->db->delete('establecimiento');
-	}
+        public function eliminar($id)
+        {
+            $this->db->where('id',$id);
+            $this->db->delete('establecimiento');
+        }
 
 
     }
