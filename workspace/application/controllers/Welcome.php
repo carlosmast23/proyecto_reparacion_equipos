@@ -86,6 +86,12 @@ class Welcome extends CI_Controller
 
 		//if($usuario=='admin' && $clave=='admin')
 		if ($validacionLogin) {
+
+			$this->load->model('UsuarioModel');
+			$usuarioTmp=$this->UsuarioModel->buscarPorUsuario($usuario);
+			
+			$this->session->set_userdata('tipo_usuario', $usuarioTmp['tipo']);
+			$this->session->set_userdata('nombres_completos', $usuarioTmp['nombres'].' '.$usuarioTmp['apellidos']);
 			redirect('admin/index');
 		} else {
 			$this->cargarPlantilla('login.php', array("mensaje" => "Error al ingresar las credenciales"));

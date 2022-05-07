@@ -38,7 +38,17 @@
 
         <div class="row" data-aos="fade-up" style="margin-top: 15px;" data-aos-delay="100">
             <div class="col-lg-4 offset-lg-4">
-                <input type="text" name="cargo" value="<?php echo $dato['cargo'] ?>" class="form-control" placeholder="Cargo" required>            </div>
+                <input type="text" name="cargo" value="<?php echo $dato['cargo'] ?>" class="form-control" placeholder="Cargo" required>            
+            </div>
+        </div>
+
+        <div class="row" data-aos="fade-up" style="margin-top: 15px;" data-aos-delay="100">
+            <div class="col-lg-4 offset-lg-4">
+                <select name="tipo" class="form-control buscar">
+                    <option <?php if($dato['tipo'] == 'Administrador') echo"selected"; ?> value="Administrador" >Administrador</option>
+                    <option <?php if($dato['tipo'] == 'Técnico') echo"selected"; ?> value="Técnico" >Técnico</option>
+                </select>
+            </div>
         </div>
 
         <div class="row" data-aos="fade-up" style="margin-top: 15px;" data-aos-delay="100">
@@ -59,6 +69,7 @@
                         <th scope="col">Nombres</th>
                         <th scope="col">Correo Electrónico</th>
                         <th scope="col">Cargo</th>
+                        <th scope="col">Tipo</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,6 +84,7 @@
                             <td><?php echo $fila->nombres ?></td>
                             <td><?php echo $fila->correo ?></td>
                             <td><?php echo $fila->cargo ?></td>
+                            <td><?php echo $fila->tipo ?></td>
                             <td>
                                 <a href="<?php echo base_url('index.php/admin/usuarioVista') . "/" . $fila->id ?>" title="Editar"><i class="fa fa-edit fa-lg" aria-hidden="true"></i></a>
                                 <a onclick="return confirm('Esta seguro que quiere eliminar el registro?')" href="<?php echo base_url('index.php/admin/usuarioEliminar') . "/" . $fila->id ?>" title="Eliminar">

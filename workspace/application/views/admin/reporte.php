@@ -38,6 +38,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Producto</th>
+                            <th scope="col">Técnico</th>
                             <th scope="col">Establecimiento</th>
                             <th scope="col">Fecha Ingreso</th>
                             <th scope="col">Observaciones</th>
@@ -51,7 +52,8 @@
                         ?>
                             <tr>
                                 <td><?php echo $contador++ ?></td>
-                                <td><?php echo $fila->codigo_especifico . ' ' . $fila->descripcion ?></td>
+                                <td><?php echo $fila->codigo_especifico . ' ' . $fila->descripcion ?></td>                                
+                                <td><?php echo $fila->nombre_tecnico ?></td>
                                 <td><?php echo $fila->nombre ?></td>
                                 <td><?php echo $fila->fecha_ingreso ?></td>
                                 <td><?php echo $fila->observaciones ?></td>

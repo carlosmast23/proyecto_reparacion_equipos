@@ -11,7 +11,7 @@
         public function buscarPorEstado($estado)
         {
             $resultado = $this->db->query(
-                "select r.id, r.fecha_ingreso, r.estado, r.observaciones, pe.codigo_especifico, e.nombre, pg.descripcion".
+                "select r.id, r.fecha_ingreso, r.estado, r.observaciones, pe.codigo_especifico, e.nombre, pg.descripcion,r.nombre_tecnico ".
                 " from reparacion r".
                 " inner join producto_especifico pe on r.id_producto_especifico = pe.id".
                 " inner join establecimiento e on pe.id_establecimiento = e.id".
@@ -24,7 +24,7 @@
         public function todos()
         {
             $resultado = $this->db->query(
-                'select r.id, r.fecha_ingreso, r.estado, r.observaciones, pe.codigo_especifico, e.nombre, pg.descripcion'.
+                'select r.id, r.fecha_ingreso, r.estado, r.observaciones, pe.codigo_especifico, e.nombre, pg.descripcion,r.nombre_tecnico '.
                 ' from reparacion r'.
                 ' inner join producto_especifico pe on r.id_producto_especifico = pe.id'.
                 ' inner join establecimiento e on pe.id_establecimiento = e.id'.
@@ -33,9 +33,9 @@
             return $resultado;
         }
 
-        public function crear($fecha_ingreso,$estado,$observaciones,$id_producto_especifico)
+        public function crear($fecha_ingreso,$estado,$observaciones,$id_producto_especifico,$nombre_tecnico)
         {
-            $resultado=$this->db->query("INSERT INTO reparacion (fecha_ingreso, estado, observaciones, id_producto_especifico) VALUES('$fecha_ingreso','$estado','$observaciones', '$id_producto_especifico');");
+            $resultado=$this->db->query("INSERT INTO reparacion (fecha_ingreso, estado, observaciones, id_producto_especifico,nombre_tecnico) VALUES('$fecha_ingreso','$estado','$observaciones', '$id_producto_especifico','$nombre_tecnico');");
             if ($resultado == true) {
                 return true;
             } else {

@@ -56,7 +56,8 @@ class Admin extends CI_Controller
 			$this->input->post("apellidos"),
 			$this->input->post("nombres"),
 			$this->input->post("correo"),
-			$this->input->post("cargo")
+			$this->input->post("cargo"),
+			$this->input->post("tipo")
 		);
 
 	}
@@ -70,7 +71,8 @@ class Admin extends CI_Controller
 			$this->input->post("apellidos"),
 			$this->input->post("nombres"),
 			$this->input->post("correo"),
-			$this->input->post("cargo")
+			$this->input->post("cargo"),
+			$this->input->post("tipo")
 		);
 
 	}
@@ -368,12 +370,15 @@ class Admin extends CI_Controller
 	}
 	public function reparacionGrabar()
 	{
+		$nombre_tecnico=$this->session->userdata('nombres_completos');
+
 		$this->load->model('ReparacionModel');
 		$this->ReparacionModel->crear(
 			$this->input->post("fecha_ingreso"),
 			$this->input->post("estado"),
 			$this->input->post("observaciones"),
-			$this->input->post("id_producto_especifico")
+			$this->input->post("id_producto_especifico"),
+			$nombre_tecnico
 		);
 	}
 	public function reparacionEditar()
@@ -384,7 +389,8 @@ class Admin extends CI_Controller
 			$this->input->post("fecha_ingreso"),
 			$this->input->post("estado"),
 			$this->input->post("observaciones"),
-			$this->input->post("id_producto_especifico")
+			$this->input->post("id_producto_especifico"),
+			$this->input->post("nombre_tecnico")
 		);
 	}
 	public function reparacionEliminar($id = NULL)

@@ -5,13 +5,13 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Mantenimiento Equipos - Index</title>
+    <title>Reparaciones CCE</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="<?= base_url() ?>public/assets/img/favicon.png" rel="icon">
-    <link href="<?= base_url() ?>public/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="<?= base_url() ?>public/assets/img/man-web.png" rel="icon">
+    <link href="<?= base_url() ?>public/assets/img/mantenimiento.png" rel="mantenimiento-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -46,14 +46,14 @@
     <section id="topbar" class="d-flex align-items-center">
         <div class="container d-flex justify-content-center justify-content-md-between">
             <div class="contact-info d-flex align-items-center">
-                <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">admin@gmail.com</a></i>
-                <i class="bi bi-phone d-flex align-items-center ms-4"><span>022222222</span></i>
+                <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:	presidencia@casadelacultura.gob.ec">presidencia@casadelacultura.gob.ec</a></i>
+                <i class="bi bi-phone d-flex align-items-center ms-4"><span>2565808 Ext. 123/169</span></i>
             </div>
             <div class="social-links d-none d-md-flex align-items-center">
-                <a href="https://api.whatsapp.com/send?phone=599999999999" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+                
+                <a href="https://www.facebook.com/CasaDeLasCulturasEC" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://twitter.com/CasadelaCultura" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="https://www.youtube.com/user/ccecasadelacultura" class="youtube"><i class="bi bi-youtube"></i></i></a>
             </div>
         </div>
     </section>

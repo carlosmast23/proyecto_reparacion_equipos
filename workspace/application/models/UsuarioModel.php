@@ -8,15 +8,21 @@
             return $query->row_array(); //Devuelve un unico resultado
         }
 
+        public function buscarPorUsuario($usuario)
+        {
+            $query=$this->db->get_where('usuario',array('usuario' => $usuario));
+            return $query->row_array(); //Devuelve un unico resultado
+        }
+
         public function todos()
         {
             $resultado=$this->db->get('usuario');
             return $resultado;
         }
 
-        public function crear($usuario,$clave,$apellidos,$nombres,$correo,$cargo)
+        public function crear($usuario,$clave,$apellidos,$nombres,$correo,$cargo,$tipo)
         {
-            $resultado=$this->db->query("INSERT INTO usuario (usuario, clave, apellidos,nombres, correo,cargo) VALUES('$usuario', $clave, '$nombres','$apellidos' ,'$correo','$cargo');");
+            $resultado=$this->db->query("INSERT INTO usuario (usuario, clave, apellidos,nombres, correo,cargo,tipo) VALUES('$usuario', $clave, '$nombres','$apellidos' ,'$correo','$cargo','$tipo');");
             if ($resultado == true) {
                 return true;
             } else {
@@ -25,7 +31,7 @@
 
         }
 
-        public function editar($id,$usuario,$clave,$apellidos,$nombres,$correo,$cargo)
+        public function editar($id,$usuario,$clave,$apellidos,$nombres,$correo,$cargo,$tipo)
         {
             $data = array(
                 'id' => $id,
@@ -34,7 +40,8 @@
                 'apellidos' => $apellidos,
                 'nombres' => $nombres,
                 'correo' => $correo,                
-                'cargo' => $cargo
+                'cargo' => $cargo,
+                'tipo' => $tipo
             );
             $this->db->where('id', $id);
             return $this->db->update('usuario', $data);

@@ -33,7 +33,7 @@
                 <input type="text" name="observaciones" value="<?php echo $dato['observaciones'] ?>" class="form-control" placeholder="Observaciones" required> 
             </div>
         </div>
-        <<div class="row" data-aos="fade-up" style="margin-top: 15px;" data-aos-delay="100">
+        <div class="row" data-aos="fade-up" style="margin-top: 15px;" data-aos-delay="100">
             <div class="col-lg-4 offset-lg-4">Estado:
                 <select name="estado" class="form-control">
                     <option <?php if($dato['estado'] == 'R') echo"selected"; ?> value="Reparando">Reparando</option>
@@ -57,6 +57,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Producto</th>
                         <th scope="col">Establecimiento</th>
+                        <th scope="col">Técnico</th>
                         <th scope="col">Fecha Ingreso</th>
                         <th scope="col">Observaciones</th>
                         <th scope="col">Estado</th>
@@ -71,6 +72,7 @@
                             <td><?php echo $contador++ ?></td>
                             <td><?php echo $fila->codigo_especifico.' '.$fila->descripcion ?></td>
                             <td><?php echo $fila->nombre ?></td>
+                            <td><?php echo $fila->nombre_tecnico ?></td>
                             <td><?php echo $fila->fecha_ingreso ?></td>
                             <td><?php echo $fila->observaciones ?></td>
                             <td>

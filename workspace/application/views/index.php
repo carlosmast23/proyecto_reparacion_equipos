@@ -1,24 +1,17 @@
+<div class="container row justify-content-center m-auto ", style = "width: 50em 0; margin: 2.25rem;">   
 
-    <main id="main">
-        <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact">
-            <div class="container" data-aos="fade-up">
+<div class="col-sm" >
+    <div class="container", style = "width: 50em 0;">
+       <center>
+           <h5>Control y Mantenimiento para los equipos de audio y video 
+       
+           de la Casa de la Cultura Ecuatoriana</h5>
+           <p>Matriz Quito</p>
+           <img src="<?= base_url() ?>public/assets/img/otros/fondo_index.png" class="img-fluid" alt="">
+       </center>
+   </div>
+</div>
 
-                <div class="section-title">
-                    <h3><span>Integrantes</span></h3>
-                </div>
 
-                <ul class="list-group">
-                    <li class="list-group-item">Nombre Integrante</li>
-                    <li class="list-group-item">Nombre Integrante</li>
-                    <li class="list-group-item">Nombre Integrante</li>
-                </ul>
 
-            
-
-            </div>
-        </section>
-        <!-- End Contact Section -->
-
-    </main>
-    <!-- End #main -->
+</div>
